@@ -17,13 +17,16 @@ package com.nesscomputing.event.jms;
 
 import static java.lang.String.format;
 
+import java.io.File;
 import java.util.UUID;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 
-
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerFactory;
+import org.apache.activemq.broker.BrokerRegistry;
+import org.apache.activemq.broker.BrokerService;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -39,6 +42,7 @@ import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
 import com.google.inject.Stage;
+
 import com.nesscomputing.config.Config;
 import com.nesscomputing.config.ConfigModule;
 import com.nesscomputing.event.NessEvent;
@@ -54,8 +58,10 @@ import com.nesscomputing.lifecycle.Lifecycle;
 import com.nesscomputing.lifecycle.LifecycleStage;
 import com.nesscomputing.lifecycle.guice.LifecycleModule;
 import com.nesscomputing.testing.lessio.AllowDNSResolution;
+import com.nesscomputing.testing.lessio.AllowLocalFileAccess;
 
 @AllowDNSResolution
+@AllowLocalFileAccess(paths={"%TMP_DIR%"})
 public class TestJmsEventTransport
 {
     private static final NessEventType TEST_EVENT_TYPE = NessEventType.getForName("TEST_EVENT");
@@ -73,11 +79,20 @@ public class TestJmsEventTransport
 
     private static Connection CONNECTION = null;
     private static String BROKER_URI = null;
+    private static BrokerService BROKER_SERVICE = null;
 
     @BeforeClass
     public static void startBroker() throws Exception
     {
-        BROKER_URI = format("vm:broker:(vm://testbroker-%s)?persistent=false&useJmx=false", UUID.randomUUID().toString());
+        String uri = format("broker:(vm://testbroker-%s)?persistent=false&useJmx=false", UUID.randomUUID().toString());
+        BROKER_SERVICE = BrokerFactory.createBroker(uri, false);
+        BROKER_SERVICE.setTmpDataDirectory(new File(System.getProperty("java.io.tmpdir")));
+
+        BROKER_SERVICE.start();
+
+        BrokerRegistry.getInstance().bind("localhost", BROKER_SERVICE);
+
+        BROKER_URI = "vm:" + uri;
         final ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(BROKER_URI);
         Assert.assertNull(CONNECTION);
         CONNECTION = connectionFactory.createConnection();
@@ -90,6 +105,10 @@ public class TestJmsEventTransport
         Assert.assertNotNull(CONNECTION);
         CONNECTION.close();
         CONNECTION = null;
+
+        Assert.assertNotNull(BROKER_SERVICE);
+        BROKER_SERVICE.stop();
+        BROKER_SERVICE = null;
     }
 
     @Before
