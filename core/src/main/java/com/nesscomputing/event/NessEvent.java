@@ -109,11 +109,11 @@ public class NessEvent
     /**
      * Create a new event.
      *
-     * @param user		 user that the event happend for
+     * @param user       user that the event happend for
      * @param timestamp the time when this event entered the system
-     * @param type	  event type
-     * @param payload		arbitrary data
-     * @param id		   system-assigned uuid
+     * @param type    event type
+     * @param payload       arbitrary data
+     * @param id           system-assigned uuid
      */
     NessEvent(@Nullable final UUID user,
               @Nullable final DateTime timestamp,
