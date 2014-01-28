@@ -23,17 +23,6 @@ import java.util.UUID;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.broker.BrokerFactory;
-import org.apache.activemq.broker.BrokerRegistry;
-import org.apache.activemq.broker.BrokerService;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Binder;
 import com.google.inject.Guice;
@@ -49,19 +38,28 @@ import com.nesscomputing.event.NessEvent;
 import com.nesscomputing.event.NessEventModule;
 import com.nesscomputing.event.NessEventSender;
 import com.nesscomputing.event.NessEventType;
-import com.nesscomputing.event.jms.JmsEventConfig;
-import com.nesscomputing.event.jms.JmsEventModule;
 import com.nesscomputing.event.jms.util.CountingEventReceiver;
 import com.nesscomputing.jackson.NessJacksonModule;
 import com.nesscomputing.jms.JmsConfig;
 import com.nesscomputing.lifecycle.Lifecycle;
 import com.nesscomputing.lifecycle.LifecycleStage;
 import com.nesscomputing.lifecycle.guice.LifecycleModule;
-import com.nesscomputing.testing.lessio.AllowDNSResolution;
-import com.nesscomputing.testing.lessio.AllowLocalFileAccess;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerFactory;
+import org.apache.activemq.broker.BrokerRegistry;
+import org.apache.activemq.broker.BrokerService;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.kitei.testing.lessio.AllowDNSResolution;
+import org.kitei.testing.lessio.AllowTmpDirAccess;
 
 @AllowDNSResolution
-@AllowLocalFileAccess(paths={"%TMP_DIR%"})
+@AllowTmpDirAccess
 public class TestJmsEventTransport
 {
     private static final NessEventType TEST_EVENT_TYPE = NessEventType.getForName("TEST_EVENT");

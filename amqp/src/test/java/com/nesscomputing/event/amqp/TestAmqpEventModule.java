@@ -15,11 +15,6 @@
  */
 package com.nesscomputing.event.amqp;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Binder;
 import com.google.inject.Guice;
@@ -27,6 +22,7 @@ import com.google.inject.Inject;
 import com.google.inject.Module;
 import com.google.inject.Stage;
 import com.google.inject.name.Named;
+
 import com.nesscomputing.amqp.AmqpConfig;
 import com.nesscomputing.config.Config;
 import com.nesscomputing.config.ConfigModule;
@@ -38,8 +34,13 @@ import com.nesscomputing.jackson.NessJacksonModule;
 import com.nesscomputing.lifecycle.Lifecycle;
 import com.nesscomputing.lifecycle.LifecycleStage;
 import com.nesscomputing.lifecycle.guice.LifecycleModule;
-import com.nesscomputing.testing.lessio.AllowDNSResolution;
-import com.nesscomputing.testing.lessio.AllowNetworkListen;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.kitei.testing.lessio.AllowDNSResolution;
+import org.kitei.testing.lessio.AllowNetworkListen;
 
 @AllowDNSResolution
 @AllowNetworkListen(ports={0})

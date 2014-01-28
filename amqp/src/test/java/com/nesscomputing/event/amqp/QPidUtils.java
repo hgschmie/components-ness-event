@@ -21,11 +21,11 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.URL;
 
-import org.apache.qpid.server.Broker;
-import org.apache.qpid.server.BrokerOptions;
-
 import com.google.common.base.Throwables;
 import com.google.common.io.Resources;
+
+import org.apache.qpid.server.Broker;
+import org.apache.qpid.server.BrokerOptions;
 
 /**
  * Starts and stops a local QPid for testing.
@@ -82,7 +82,9 @@ public class QPidUtils
         }
         finally {
             try {
-                socket.close();
+                if (socket != null) {
+                    socket.close();
+                }
             } catch (IOException ioe) {
                 // GNDN
             }

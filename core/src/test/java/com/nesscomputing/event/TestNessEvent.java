@@ -18,14 +18,12 @@ package com.nesscomputing.event;
 import java.util.Map;
 import java.util.UUID;
 
+import com.google.common.collect.ImmutableMap;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.google.common.collect.ImmutableMap;
-import com.nesscomputing.event.NessEvent;
-import com.nesscomputing.event.NessEventType;
 
 public class TestNessEvent
 {

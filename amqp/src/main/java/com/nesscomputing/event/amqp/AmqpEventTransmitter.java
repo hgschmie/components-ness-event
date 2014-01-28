@@ -26,6 +26,7 @@ import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+
 import com.nesscomputing.amqp.AmqpRunnableFactory;
 import com.nesscomputing.amqp.ExchangePublisher;
 import com.nesscomputing.event.NessEvent;

@@ -17,12 +17,11 @@ package com.nesscomputing.event.amqp.util;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-import org.junit.Ignore;
-
 import com.nesscomputing.event.NessEvent;
 import com.nesscomputing.event.NessEventReceiver;
 import com.nesscomputing.event.NessEventType;
+
+import org.junit.Ignore;
 
 @Ignore
 public class CountingEventReceiver implements NessEventReceiver

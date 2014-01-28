@@ -15,14 +15,13 @@
  */
 package com.nesscomputing.event.server;
 
+import com.google.inject.Injector;
+
+import com.nesscomputing.config.Config;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.google.inject.Injector;
-import com.nesscomputing.config.Config;
-import com.nesscomputing.event.server.NessEventResource;
-import com.nesscomputing.event.server.NessEventServerMain;
-import com.nesscomputing.testing.lessio.AllowNetworkListen;
+import org.kitei.testing.lessio.AllowNetworkListen;
 
 @AllowNetworkListen(ports={0})
 public class TestNessEventServerMain

@@ -15,9 +15,6 @@
  */
 package com.nesscomputing.event;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -25,9 +22,12 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.Scopes;
 import com.google.inject.Stage;
+
 import com.nesscomputing.config.ConfigModule;
 import com.nesscomputing.config.ConfigProvider;
-import com.nesscomputing.event.NessEventConfig;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TestNessEventConfig
 {

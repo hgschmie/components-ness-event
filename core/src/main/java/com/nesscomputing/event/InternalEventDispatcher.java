@@ -17,8 +17,6 @@ package com.nesscomputing.event;
 
 import static com.nesscomputing.event.NessEventModule.EVENT_NAME;
 
-import com.nesscomputing.logging.Log;
-
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -27,6 +25,8 @@ import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+
+import com.nesscomputing.logging.Log;
 
 /**
  * Accepts arbitrary events and dispatches them to the event system.

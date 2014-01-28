@@ -18,12 +18,6 @@ package com.nesscomputing.event;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -31,14 +25,14 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.Scopes;
 import com.google.inject.Stage;
+
 import com.nesscomputing.config.ConfigModule;
-import com.nesscomputing.event.NessEvent;
-import com.nesscomputing.event.NessEventDispatcher;
-import com.nesscomputing.event.NessEventModule;
-import com.nesscomputing.event.NessEventSender;
-import com.nesscomputing.event.NessEventTransmitter;
-import com.nesscomputing.event.NessEventType;
 import com.nesscomputing.event.util.CountingEventReceiver;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 public class NessEventTransmitterTest
 {

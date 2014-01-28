@@ -24,16 +24,16 @@ import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.QueueingConsumer.Delivery;
 
-import org.apache.commons.io.Charsets;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.nesscomputing.config.Config;
 import com.nesscomputing.config.ConfigModule;
 import com.nesscomputing.event.NessEvent;
 import com.nesscomputing.event.NessEventDispatcher;
 import com.nesscomputing.jackson.NessJacksonModule;
 import com.nesscomputing.logging.Log;
+
+import org.apache.commons.io.Charsets;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  *
